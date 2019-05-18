@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  subtitles_helper:
+    build: .
+    image: seleznev/subtitles_helper:latest
+    container_name: "subtitles_helper"
+    hostname: "subtitles_helper"
+    restart: always
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+    ports:
+      - 80:8090
+
+    environment:
+      - ADDR=:8090
+      - YA_API_KEY=<KEY>
+      - DB_PATH=/srv/var/subtitles.db
+
+    volumes:
+      - ./var:/srv/var
