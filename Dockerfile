@@ -11,6 +11,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags="-s -w" -installsuffix cgo -o 
 
 # stage 2
 FROM scratch as subtitles_helper
+COPY --from=build_base /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 WORKDIR /root/
 COPY --from=build_base /app /app
 COPY ./static ./static
