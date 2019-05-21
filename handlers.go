@@ -30,9 +30,9 @@ func lemmatization(input []string) []string {
 	keys := make(map[string]struct{})
 
 	for _, word := range input {
+		word = lemm.Lemma(word)
 		if _, value := keys[word]; !value {
 			keys[word] = struct{}{}
-			word = lemm.Lemma(word)
 			if !isException(word) {
 				result = append(result, word)
 			}

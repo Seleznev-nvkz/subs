@@ -20,7 +20,7 @@ func TestLemmatization(t *testing.T) {
 	db = newDB("/tmp/test_parse.db")
 	defer os.Remove("/tmp/test_parse.db")
 
-	data := []string{"yeah", "i", "exists", "engineered", "that", "solid", "feeling", "amazing"}
+	data := []string{"yeah", "i", "exists", "engineered", "that", "solid", "feeling", "amazing", "exist"}
 	res := []string{"yes", "i", "exist", "engineer", "that", "solid", "feel", "amaze"}
 
 	assert.Equal(t, res, lemmatization(data))
